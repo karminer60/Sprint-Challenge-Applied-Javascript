@@ -7,3 +7,23 @@
 //
 //  Each tab should look like this:
 //    <div class="tab">topic here</div>
+
+
+const topicsHere = document.querySelector('.topics');
+axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
+    .then(response => {
+      response.data.topics.forEach(item=>{
+        const tab = document.createElement('div');
+        tab.classList.add('tab');
+        topicsHere.appendChild(tab);
+        tab.textContent = item;
+
+      });
+    })
+
+    .catch(error => {
+        console.log('Get data failed');
+    })
+    .finally(() => {
+        console.log('done');
+    })
