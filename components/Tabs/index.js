@@ -9,20 +9,18 @@
 //    <div class="tab">topic here</div>
 
 
-//const followersArray = ['tetondan','dustinmyers','justsml','luishrd','bigknell'];
-//followersArray.forEach(friend => {
-  axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
+const topicsHere = document.querySelector('.topics');
+axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
     .then(response => {
-      const dataFriend = response.data;
-      const cards = document.querySelector('.cards');
-      const card = cardMaker(dataFriend);
-      cards.appendChild(card);
+      response.data.topics.forEach(item=>{
+        topicsHere.appendChild(item);
+
+      });
     })
 
     .catch(error => {
         console.log('Get data failed');
-      })
-      .finally(() => {
+    })
+    .finally(() => {
         console.log('done');
-      })
-//});
+    })
