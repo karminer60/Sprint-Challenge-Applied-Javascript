@@ -30,7 +30,8 @@ function cardMaker(attrs) {
   
     card.appendChild(headlineI)
     author.appendChild(imageContainer)
-    imageContainter.appendChild(img)
+    card.appendChild(author)
+    imageContainer.appendChild(img)
     author.appendChild(name)
 
 
@@ -49,16 +50,20 @@ function cardMaker(attrs) {
   }
 
 
-const entryPoint = document.querySelector('.body');
+
 
 function getHeadlines() {
+    
     axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
+    
       .then(response => {
+
+        const entryPoint = document.querySelector('.cards-container');
         const headlineJa = response.data.articles.javascript
         
         
 
-        const headlineB = response.data.articles.bootsrap
+        const headlineB = response.data.articles.bootstrap
        
         
         const headlineJq = response.data.articles.jquery
@@ -69,41 +74,76 @@ function getHeadlines() {
         const headlineT = response.data.articles.technology
 
         headlineJa.forEach(item =>{
-            for(let i=0; i < headlineJa.length; i++){
-                const headline = item[headline][i];
-                const authorPhoto = item[authorPhoto][i];
-                const authorName = item[authorName][i];
-                
-                const card = dogCardMaker({ headline: headline, authorPhoto: authorPhoto, authorName:authorName})
-                entryPoint.appendChild(card)
-            }   
-
-        })
             
-        authorPhotoJa.forEach(item =>{
-            for(let i=0; i < headlineJa.length; i++){
-                const headline = item[headline][i];
-                const authorPhoto = item[authorPhoto][i];
-                const authorName = item[authorName][i];
+                const headline = item.headline;
+                const authorPhoto = item.authorPhoto;
+                const authorName = item.authorName;
                 
-                const card = dogCardMaker({ headline: headline, authorPhoto: authorPhoto, authorName:authorName})
+                const card = cardMaker({ headline:headline, authorPhoto:authorPhoto, authorName:authorName})
                 entryPoint.appendChild(card)
-            }   
-
+             
         })
         
-        authorNameJa.forEach(item =>{
-            for(let i=0; i < headlineJa.length; i++){
-                const headline = item[headline][i];
-                const authorPhoto = item[authorPhoto][i];
-                const authorName = item[authorName][i];
-                
-                const card = dogCardMaker({ headline: headline, authorPhoto: authorPhoto, authorName:authorName})
-                entryPoint.appendChild(card)
-            }   
+            
+        
 
+        headlineB.forEach(item =>{
+            
+            const headline = item.headline;
+            const authorPhoto = item.authorPhoto;
+            const authorName = item.authorName;
+            
+            const card = cardMaker({ headline:headline, authorPhoto:authorPhoto, authorName:authorName})
+            entryPoint.appendChild(card)
+         
+        })
+    
+        
+        
+
+        headlineJq.forEach(item =>{
+            
+            const headline = item.headline;
+            const authorPhoto = item.authorPhoto;
+            const authorName = item.authorName;
+        
+            const card = cardMaker({ headline:headline, authorPhoto:authorPhoto, authorName:authorName})
+            entryPoint.appendChild(card)
+     
         })
 
+    
+        
+
+        
+
+        headlineN.forEach(item =>{
+            
+            const headline = item.headline;
+            const authorPhoto = item.authorPhoto;
+            const authorName = item.authorName;
+    
+            const card = cardMaker({ headline:headline, authorPhoto:authorPhoto, authorName:authorName})
+            entryPoint.appendChild(card)
+ 
+        })
+
+
+        
+
+        headlineT.forEach(item =>{
+            
+            const headline = item.headline;
+            const authorPhoto = item.authorPhoto;
+            const authorName = item.authorName;
+    
+            const card = cardMaker({ headline:headline, authorPhoto:authorPhoto, authorName:authorName})
+            entryPoint.appendChild(card)
+ 
+        })
+
+
+       
         
 
 
@@ -111,7 +151,7 @@ function getHeadlines() {
     
       })
       .catch(error => {
-        console.log('Get failed')
+        console.log('Get failed', error)
       })
       .finally(() => {
         console.log('done')

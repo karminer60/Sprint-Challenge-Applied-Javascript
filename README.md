@@ -30,23 +30,23 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
-A DOM is a 
+A DOM is a neutral API. It stands for Document object Model.
 
 2. What is an event?
 
-An event is a
+An event is an action that happens in the system
 
 3. What is an event listener?
 
-An event listener is 
+An event listener is something that listens for an event and runs code if so.  
 
 4. Why would we convert a NodeList into an Array?
 
-You would convert NodeList into an Array because
+You would convert NodeList into an Array because it isn't exactly an array
 
 5. What is a component?
 
-A component is a 
+A component is a set of code that uses HTML CSS and JS. It is reusable 
 
 ### Git Set up
 
