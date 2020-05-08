@@ -18,19 +18,104 @@
 // </div>
 //
 // Use your function to create a card for each of the articles and add the card to the DOM.
+function cardMaker(attrs) {
+    const { headline,authorPhoto, authorName } = attrs
+  
+    const card = document.createElement('div')
+    const headlineI = document.createElement('div')
+    const author = document.createElement('div')
+    const imageContainer = document.createElement('div')
+    const img = document.createElement('img')
+    const name = document.createElement('span')
+  
+    card.appendChild(headlineI)
+    author.appendChild(imageContainer)
+    imageContainter.appendChild(img)
+    author.appendChild(name)
 
-//const topicsHere = document.querySelector('.topics');
-axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
-    //.then(response => {
-      //response.data.topics.forEach(item=>{
-        //topicsHere.appendChild(item);
 
-      //});
-    //})
+  
+    card.classList.add('card')
+    headlineI.classList.add('headline')
+    author.classList.add('author')
+    imageContainer.classList.add('img-container')
 
-    //.catch(error => {
-     //   console.log('Get data failed');
-    //})
-    //.finally(() => {
-    //      console.log('done');
-    //})
+  
+    headlineI.textContent = headline
+    img.src = authorPhoto
+    name.textContent = authorName
+  
+    return card;
+  }
+
+
+const entryPoint = document.querySelector('.body');
+
+function getHeadlines() {
+    axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
+      .then(response => {
+        const headlineJa = response.data.articles.javascript
+        
+        
+
+        const headlineB = response.data.articles.bootsrap
+       
+        
+        const headlineJq = response.data.articles.jquery
+        
+
+        const headlineN = response.data.articles.node
+
+        const headlineT = response.data.articles.technology
+
+        headlineJa.forEach(item =>{
+            for(let i=0; i < headlineJa.length; i++){
+                const headline = item[headline][i];
+                const authorPhoto = item[authorPhoto][i];
+                const authorName = item[authorName][i];
+                
+                const card = dogCardMaker({ headline: headline, authorPhoto: authorPhoto, authorName:authorName})
+                entryPoint.appendChild(card)
+            }   
+
+        })
+            
+        authorPhotoJa.forEach(item =>{
+            for(let i=0; i < headlineJa.length; i++){
+                const headline = item[headline][i];
+                const authorPhoto = item[authorPhoto][i];
+                const authorName = item[authorName][i];
+                
+                const card = dogCardMaker({ headline: headline, authorPhoto: authorPhoto, authorName:authorName})
+                entryPoint.appendChild(card)
+            }   
+
+        })
+        
+        authorNameJa.forEach(item =>{
+            for(let i=0; i < headlineJa.length; i++){
+                const headline = item[headline][i];
+                const authorPhoto = item[authorPhoto][i];
+                const authorName = item[authorName][i];
+                
+                const card = dogCardMaker({ headline: headline, authorPhoto: authorPhoto, authorName:authorName})
+                entryPoint.appendChild(card)
+            }   
+
+        })
+
+        
+
+
+        
+    
+      })
+      .catch(error => {
+        console.log('Get failed')
+      })
+      .finally(() => {
+        console.log('done')
+      })
+  }
+
+  getHeadlines();
