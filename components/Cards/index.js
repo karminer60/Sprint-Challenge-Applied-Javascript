@@ -18,3 +18,19 @@
 // </div>
 //
 // Use your function to create a card for each of the articles and add the card to the DOM.
+
+//const topicsHere = document.querySelector('.topics');
+axios.get(`https://lambda-times-backend.herokuapp.com/articles`)
+    //.then(response => {
+      //response.data.topics.forEach(item=>{
+        //topicsHere.appendChild(item);
+
+      //});
+    //})
+
+    //.catch(error => {
+     //   console.log('Get data failed');
+    //})
+    //.finally(() => {
+    //      console.log('done');
+    //})
