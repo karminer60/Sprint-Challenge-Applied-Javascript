@@ -30,13 +30,23 @@ Edit this document to include your answers after each question. Make sure to lea
 
 1. What is the DOM?
 
+A DOM is a 
+
 2. What is an event?
+
+An event is a
 
 3. What is an event listener?
 
+An event listener is 
+
 4. Why would we convert a NodeList into an Array?
 
+You would convert NodeList into an Array because
+
 5. What is a component?
+
+A component is a 
 
 ### Git Set up
 
