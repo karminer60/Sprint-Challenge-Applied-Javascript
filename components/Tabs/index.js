@@ -7,3 +7,22 @@
 //
 //  Each tab should look like this:
 //    <div class="tab">topic here</div>
+
+
+//const followersArray = ['tetondan','dustinmyers','justsml','luishrd','bigknell'];
+//followersArray.forEach(friend => {
+  axios.get(`https://lambda-times-backend.herokuapp.com/topics`)
+    .then(response => {
+      const dataFriend = response.data;
+      const cards = document.querySelector('.cards');
+      const card = cardMaker(dataFriend);
+      cards.appendChild(card);
+    })
+
+    .catch(error => {
+        console.log('Get data failed');
+      })
+      .finally(() => {
+        console.log('done');
+      })
+//});
